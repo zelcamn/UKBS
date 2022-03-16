@@ -1,12 +1,23 @@
-from flask import Flask
+from flask import Flask, render_template
+import serial
+
 
 app = Flask(__name__)
 
 
 @app.route('/')
-@app.route('/index')
-def index():
-    return "Привет, Яндекс! | Vulp, εnδex!"
+@app.route('/main')
+def main():
+    return render_template('index.html')
+
+
+@app.route('/update<index>')
+def update(index):
+    ser = serial.Serial(f'COM{index}')
+    data = ser.readline()
+    print(data)
+    ser.close()
+    return f'here is {index} farm data:{data}'
 
 
 if __name__ == '__main__':
