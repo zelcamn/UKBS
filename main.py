@@ -21,4 +21,4 @@ def update(index):
 
 
 if __name__ == '__main__':
-    app.run(port=8001, host='192.168.2.113')
+    app.run(port=8001, host='192.168.2.113') #FUCK
